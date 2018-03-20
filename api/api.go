@@ -6,19 +6,19 @@ import (
 	"net/http"
 
 	"github.com/henson/ProxyPool/storage"
-	"github.com/henson/ProxyPool/util"
+	// "github.com/henson/ProxyPool/util"
 )
 
 // VERSION for this program
 const VERSION = "/v1"
 
 // Run for request
-func Run() {
+func Run(host string) {
 	mux := http.NewServeMux()
 	mux.HandleFunc(VERSION+"/ip", ProxyHandler)
 	mux.HandleFunc(VERSION+"/https", FindHandler)
-	log.Println("Starting server", util.NewConfig().Host)
-	http.ListenAndServe(util.NewConfig().Host, mux)
+	log.Println("Starting server", host)
+	http.ListenAndServe(host, mux)
 }
 
 // ProxyHandler .

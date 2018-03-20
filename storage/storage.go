@@ -8,10 +8,11 @@ import (
 )
 
 // Config 全局配置文件
-var Config = util.NewConfig()
+var Config *util.Config
 
 // GlobalMgoSession 全局连接Session
-var GlobalMgoSession, _ = mgo.Dial(string(Config.Mongo.Addr))
+// var GlobalMgoSession, _ = mgo.Dial(string(Config.Mongo.Addr))
+// var GlobalMgoSession
 
 // Storage struct is used for storeing persistent data of alerts
 type Storage struct {
@@ -20,8 +21,13 @@ type Storage struct {
 	session  *mgo.Session
 }
 
+func SetConfig(value *util.Config) {
+	Config = value
+}
+
 // NewStorage creates and returns new Storage instance
 func NewStorage() *Storage {
+	GlobalMgoSession, _ := mgo.Dial(string(Config.Mongo.Addr))
 	return &Storage{database: Config.Mongo.DB, table: Config.Mongo.Table, session: GlobalMgoSession}
 }
 
