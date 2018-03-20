@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/henson/ProxyPool/storage"
+	"github.com/cwchiu/ProxyPool/storage"
 	// "github.com/henson/ProxyPool/util"
 )
 
@@ -18,6 +18,7 @@ func Run(host string) {
 	mux.HandleFunc(VERSION+"/ip", ProxyHandler)
 	mux.HandleFunc(VERSION+"/https", FindHandler)
 	log.Println("Starting server", host)
+	log.Printf("API: %s/ip", VERSION)
 	http.ListenAndServe(host, mux)
 }
 

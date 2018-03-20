@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/henson/ProxyPool/models"
+	"github.com/cwchiu/ProxyPool/models"
 	"github.com/parnurzeal/gorequest"
 )
 
@@ -40,6 +40,7 @@ func CheckProxyDB() {
 		log.Println(err.Error())
 		return
 	}
+
 	var wg sync.WaitGroup
 	for _, v := range ips {
 		wg.Add(1)
@@ -51,6 +52,7 @@ func CheckProxyDB() {
 		}(v)
 	}
 	wg.Wait()
+
 	x = conn.Count()
 	log.Println("After check, DB has:", x, "records.")
 }

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/henson/ProxyPool/models"
+	"github.com/cwchiu/ProxyPool/models"
 	"github.com/parnurzeal/gorequest"
 )
 

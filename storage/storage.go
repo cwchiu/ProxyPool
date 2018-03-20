@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"github.com/henson/ProxyPool/models"
-	"github.com/henson/ProxyPool/util"
+	"github.com/cwchiu/ProxyPool/models"
+	"github.com/cwchiu/ProxyPool/util"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
